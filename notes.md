@@ -18,7 +18,7 @@ You can install a specific version with `npm install package@4.13.3`
 
 ### npm config
 
-Npm can be configured by adding a config file `.npmrc` to the %HOME% directory.
+Npm can be configured by adding a config file `.npmrc` to the $HOME$ directory.
 
 `save-exact=true` will prevent any versioning prefixes as explained above
 
@@ -71,6 +71,31 @@ In addition to requiring it, we must add it to our express app. `app.use(morgan(
 
 Morgan takes a parameter which determines the detail of the logs. E.g. 'tiny', 'combined', ..
 
+### ESLint
+
+Catches our mistakes.
+
+Enforces code standards - fixes can sometimes be automated with `--fix`
+
+Checks that you have the correct packages in your package.json file.
+
+### Nodemon
+
+Relaunches server on file change, and lets us set up environment variables
+
+## Templating Engines
+
+```
+app.set('view engine', 'pug');
+```
+
+### Pug
+
+
+### EJS
+
+
+
 ## Static Files
 
 ### Public Directories
@@ -94,3 +119,9 @@ Instead of serving static files *only* from the public directory, we can tell ex
 `app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));`
 
 This directs the template towards more destinations if the file cannot be found in the public directory. In this case, this directory will only be searched when finding files prefixed with `/src`.
+
+## Keyboard Shortcuts
+
+Highlight text and hit Cmd+fn+F2 to select and simultaneously edit all identical strings within file.
+
+Visual studio provides 'Format Document' on right click. So for example you can change indentation type, reformat and it is all sorted.

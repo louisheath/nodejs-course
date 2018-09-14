@@ -45,6 +45,18 @@ However this is error prone and not cross-platform, so we require and use the in
 `res.sendFile(path.join(__dirname, '/views/index.html')` or
 `res.sendFile(path.join(__dirname, 'views', 'index.html')`
 
+## Routing
+
+Rather than defining all routes in one large controller, we can make modules by using the `Express.Router()`.
+
+This router can then be imported and applied to the app.
+
+```
+const bookRoutes = require('./src/routes/bookRoutes');
+
+app.use('/books', bookRoutes);
+```
+
 ## Debugging Utilities
 
 ### chalk
@@ -85,15 +97,27 @@ Relaunches server on file change, and lets us set up environment variables
 
 ## Templating Engines
 
+These packages are a lot like Thymeleaf, in that we insert variables for rendering. They do not provide the dynamicism of React or Angular.
+
 ```
 app.set('view engine', 'pug');
+
+app.get('/', (req, res) => {
+  res.render('index', {
+    // template properties
+  });
+});
 ```
 
 ### Pug
 
+Almost overly simple - removes the need for closing in HTML, relying on indentation.
+
+Probably only clean for less complex applications.
 
 ### EJS
 
+Uses Javascript syntax to give control to the template
 
 
 ## Static Files

@@ -13,13 +13,21 @@ app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dis
 app.use('/js', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/js')));
 app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist')));
 app.set('views', './src/views');
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
+const navBar = [
+  { title: 'Books', link: '/books' },
+  { title: 'Authors', link: '/authors' },
+];
+
+const bookRoutes = require('./src/routes/bookRoutes')(navBar);
+
+app.use('/books', bookRoutes);
 app.get('/', (req, res) => {
-  //res.sendFile(path.join(__dirname, '/views/index.html'));
   res.render('index', {
-    title: 'MyTitle',
-    list: ['a', 'b']
+    navBar,
+    title: 'Library',
+    blocks: [],
   });
 });
 

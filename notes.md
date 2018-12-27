@@ -1,5 +1,7 @@
 ## Node and Package Versioning
 
+node is a runtime environment for js, like the console in browser. window -> global, document -> process.
+
 ### nvm
 
 Node versions always change. Node Version Manager lets us use switch between multiple versions.
@@ -75,6 +77,14 @@ Express itself also uses debug. To only listen to debugs from one app, use `DEBU
 
 When importing debug we define which application the debugs are logged as coming from. `require('debug')('app);`
 
+### inspect
+
+`node inspect app.js` allows us to step through code. `list(10)` prints the ten lines above and below the current line of execution. `n` or `next` will step along line by line. `repl` lets us access and modify the state of the app, like the chrome console. `c` for continue to next breakpoint. use `debugger;` in the code to make breakpoints. can be used with `nodemon`.
+
+### chrome dev tools
+
+`node --inspect-brk app.js` to start, then go to `chrome://inspect` in chrome to see debug. Click `open DevTools for Node`. Same functionality but better UI. Can add breakpoints as you go.
+
 ### morgan
 
 Morgan logs network request information.
@@ -119,6 +129,11 @@ Probably only clean for less complex applications.
 
 Uses Javascript syntax to give control to the template
 
+## More npm packages
+
+### yargs
+
+allows us to more easily retrieve arguments from the command line, as well as provide help docs for each command and its required params. we chain the `command(cmd, descr, options)` method to configure commands, and follow with the `help()` method to enable the help flag.
 
 ## Static Files
 

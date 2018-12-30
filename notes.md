@@ -49,7 +49,7 @@ However this is error prone and not cross-platform, so we require and use the in
 `res.sendFile(path.join(__dirname, '/views/index.html')` or
 `res.sendFile(path.join(__dirname, 'views', 'index.html')`
 
-## Routing
+### Routing
 
 Rather than defining all routes in one large controller, we can make modules by using the `Express.Router()`.
 
@@ -143,7 +143,7 @@ allows us to more easily retrieve arguments from the command line, as well as pr
 
 ## Static Files
 
-### Public Directories
+### Public Directory
 
 We can serve libraries from `/public` rather than fetching them from a CDN. This allows us to run our server offline.
 
@@ -155,7 +155,7 @@ Then any files added to the template are relative to the public directory, for e
 
 `href="css/bootstrap.min.css"`
 
-### Using Node Modules
+### Serving libraries from Node_Modules
 
 Public directories can be a pain for libraries such as Bootstrap or jQuery, as they are fiddly to update.
 
@@ -164,12 +164,6 @@ Instead of serving static files *only* from the public directory, we can tell ex
 `app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')));`
 
 This directs the template towards more destinations if the file cannot be found in the public directory. In this case, this directory will only be searched when finding files prefixed with `/src`.
-
-## Keyboard Shortcuts
-
-Highlight text and hit Cmd+fn+F2 to select and simultaneously edit all identical strings within file.
-
-Visual studio provides 'Format Document' on right click. So for example you can change indentation type, reformat and it is all sorted.
 
 ## Testing
 
@@ -199,8 +193,22 @@ Replaces the `require()` module importing process. This gives us control over th
 
 for express apps. lets us test endpoints
 
+## MongoDB
+
+NoSQL db - collections of documents, which contain fields.
+
+Each document gets a uniquely generated id. 12 Bytes. Made up of a time stamp, the process id, a counter and a random number. We can retrieve this data from the key to inform us of when and by whom the document was stored by.
+
 ## Other
+
+### Heroku
 
 push a subfolder to heroku with 
 
 `git subtree push --prefix subfolder heroku master`
+
+### Keyboard Shortcuts
+
+Highlight text and hit Cmd+fn+F2 to select and simultaneously edit all identical strings within file.
+
+Visual studio provides 'Format Document' on right click. So for example you can change indentation type, reformat and it is all sorted.

@@ -1,0 +1,14 @@
+{
+  "name": "todo-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha **/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.0.0"
+  }
+}

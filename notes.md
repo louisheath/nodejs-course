@@ -171,6 +171,34 @@ Highlight text and hit Cmd+fn+F2 to select and simultaneously edit all identical
 
 Visual studio provides 'Format Document' on right click. So for example you can change indentation type, reformat and it is all sorted.
 
+## Testing
+
+### Mocha
+
+is damn fine. `it('should be working')`.
+
+`mocha **/*.test.js` or `nodemon --exec mocha **/*.test.js`.
+
+Use `done()` to test async functions.
+
+Use `decribe()` to group tests together.
+
+### Expect
+
+gives us nice assertions.
+
+Also gives us spies, which for example let us check if functions are called with the correct arguments.
+
+This lets us break down the testing of functions which call other functions, letting us narrow down which function is faulty.
+
+### Rewire
+
+Replaces the `require()` module importing process. This gives us control over the import methods so that we can swap out function calls with spies.
+
+### Supertest
+
+for express apps. lets us test endpoints
+
 ## Other
 
 push a subfolder to heroku with 

@@ -36,6 +36,8 @@ Express provides functionality similar to @RequestMapping in Spring.
 
 After requiring the package, we use `var app = express();`. Mappings and listeners are created via methods of this object.
 
+Express detects the content type of basic responses.
+
 ### serving pages
 
 Request mappings are handled with a callback, which takes two parameters `(req, res)`. We can send a page in response as follows:
@@ -129,6 +131,10 @@ Probably only clean for less complex applications.
 
 Uses Javascript syntax to give control to the template
 
+### Handlebars
+
+`hbs` for express. Standard html but inject variables with {{title}}
+
 ## More npm packages
 
 ### yargs
@@ -164,3 +170,9 @@ This directs the template towards more destinations if the file cannot be found 
 Highlight text and hit Cmd+fn+F2 to select and simultaneously edit all identical strings within file.
 
 Visual studio provides 'Format Document' on right click. So for example you can change indentation type, reformat and it is all sorted.
+
+## Other
+
+push a subfolder to heroku with 
+
+`git subtree push --prefix subfolder heroku master`

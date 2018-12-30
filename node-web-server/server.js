@@ -39,6 +39,14 @@ app.get('/about', (req, res) => {
   });
 });
 
+app.get('/projects', (req, res) => {
+  res.render('projects', {
+    pageTitle: 'Projects Page',
+    header: 'My Projects',
+    paragraph: 'Check out these nifty codes'
+  });
+});
+
 app.get('/bad', (req, res) => {
   res.send('<h1>you been a bad boy</h1>');
 });

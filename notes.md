@@ -61,6 +61,10 @@ const bookRoutes = require('./src/routes/bookRoutes');
 app.use('/books', bookRoutes);
 ```
 
+### Receiving POST data
+
+`body-parser` package attaches a body property to the req object, containing nicely formatted JSON data.
+
 ## Debugging Utilities
 
 ### chalk
@@ -198,6 +202,10 @@ for express apps. lets us test endpoints
 NoSQL db - collections of documents, which contain fields.
 
 Each document gets a uniquely generated id. 12 Bytes. Made up of a time stamp, the process id, a counter and a random number. We can retrieve this data from the key to inform us of when and by whom the document was stored by.
+
+### Mongoose
+
+Provides ORM - Object Relational Mapping. 'Classes' for our documents, validation and defaults.
 
 ## Other
 

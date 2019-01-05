@@ -5,10 +5,20 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "mocha **/*.test.js"
+    "watch": "nodemon --exec \"npm start\"",
+    "test": "mocha server/**/*.test.js",
+    "test-watch": "nodemon --exec \"npm test\""
+  },
+  "engines": {
+    "node": "8.11.4"
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "expect": "1.20.2",
+    "mocha": "5.2.0",
+    "supertest": "3.3.0"
+  },
   "dependencies": {
     "body-parser": "1.18.3",
     "express": "4.16.4",

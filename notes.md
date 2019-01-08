@@ -207,6 +207,8 @@ Each document gets a uniquely generated id. 12 Bytes. Made up of a time stamp, t
 
 Provides ORM - Object Relational Mapping. 'Classes' for our documents, validation and defaults.
 
+We can add 'instance' methods (basically non-static) to an object's schema.
+
 ## Other
 
 ### Heroku
@@ -215,8 +217,16 @@ push a subfolder to heroku with
 
 `git subtree push --prefix subfolder heroku master`
 
+use `heroku logs --tail` to see logs as they come in
+
 ### Keyboard Shortcuts
 
 Highlight text and hit Cmd+fn+F2 to select and simultaneously edit all identical strings within file.
 
 Visual studio provides 'Format Document' on right click. So for example you can change indentation type, reformat and it is all sorted.
+
+### Hashing
+
+We need to hash our passwords so they're safe.
+
+SHA256 obj from `crypto-js` is handy for making hashes. Or we can use `jsonwebtoken` to handle tokens and deal with verification for us.

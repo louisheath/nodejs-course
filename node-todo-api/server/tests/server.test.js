@@ -3,23 +3,12 @@ const request = require('supertest');
 const {ObjectID} = require('mongodb');
 
 const {Todo} = require('./../models/todo');
+const {User} = require('./../models/user');
 const {app} = require('./../server');
+const {todos, populateTodos, users, populateUsers} = require('./seed/seed');
 
-const todos = [{
-  _id: new ObjectID(),
-  text: 'First test todo',
-  completed: true,
-  completedAt: new Date().getTime()
-}, {
-  _id: new ObjectID(),
-  text: 'Second test todo'
-}];
-
-beforeEach((done) => {
-  Todo.remove({}).then(() => {
-    return Todo.insertMany(todos);
-  }).then(() => done());
-});
+beforeEach(populateTodos);
+beforeEach(populateUsers);
 
 describe('/POST todos', () => {
 
@@ -223,4 +212,79 @@ describe('PATCH /todos/:id', () => {
       .end(done);
   });
 
+});
+
+describe('GET /users/me', () => {
+
+  it('should return user if authenticated', (done) => {
+    request(app)
+      .get('/users/me')
+      .set('x-auth', users[0].tokens[0].token)
+      .expect(200)
+      .expect((res) => {
+        expect(res.body._id).toBe(users[0]._id.toHexString());
+        expect(res.body.email).toBe(users[0].email);
+      })
+      .end(done);
+  });
+
+  it('should return 401 if not authenticated', (done) => {
+    request(app)
+      .get('/users/me')
+      .set('x-auth', 'fail')
+      .expect(401)
+      .end(done);
+  });
+
+});
+
+describe('POST /users', () => {
+
+  it('should create a user', (done) => {
+    const email = 'new@example.com';
+    const password = 'password';
+    request(app)
+      .post('/users')
+      .send({email, password})
+      .expect(200)
+      .expect((res) => {
+        expect(res.headers['x-auth']).toExist();
+        expect(res.body._id).toExist();
+        expect(res.body.email).toBe(email);
+      })
+      .end(done);
+  });
+
+  it('should validate email format', (done) => {
+    request(app)
+      .post('/users')
+      .send({
+        email: 'notanemail',
+        password: 'password'
+      })
+      .expect(400)
+      .end(done);
+  });
+
+  it('should validate password length', (done) => {
+    request(app)
+      .post('/users')
+      .send({
+        email: 'new@example.com',
+        password: 'passw'
+      })
+      .expect(400)
+      .end(done);
+  });
+
+  it('should not create user if email in use', (done) => {
+    request(app)
+      .post('/users')
+      .send({
+        email: users[0].email,
+        password: 'password'
+      })
+      .expect(400)
+      .end(done);
+  });
 });

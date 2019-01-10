@@ -36,7 +36,9 @@ Express provides functionality similar to @RequestMapping in Spring.
 
 After requiring the package, we use `var app = express();`. Mappings and listeners are created via methods of this object.
 
-Express detects the content type of basic responses.
+Express automatically detects the content type of basic responses.
+
+'middleware' can be used for authentication, amongst other things. When requests come in they are first evaluated on the middleware functions before they reach the end point.
 
 ### serving pages
 
@@ -208,6 +210,8 @@ Each document gets a uniquely generated id. 12 Bytes. Made up of a time stamp, t
 Provides ORM - Object Relational Mapping. 'Classes' for our documents, validation and defaults.
 
 We can add methods to a class schema. 'methods' are non-static, 'statics' are static.
+
+We can add middleware to our database queries too. For example to salt passwords before saving them. 
 
 ## Other
 

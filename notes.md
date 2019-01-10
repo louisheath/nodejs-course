@@ -207,7 +207,7 @@ Each document gets a uniquely generated id. 12 Bytes. Made up of a time stamp, t
 
 Provides ORM - Object Relational Mapping. 'Classes' for our documents, validation and defaults.
 
-We can add 'instance' methods (basically non-static) to an object's schema.
+We can add methods to a class schema. 'methods' are non-static, 'statics' are static.
 
 ## Other
 

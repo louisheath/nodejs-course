@@ -191,6 +191,8 @@ Also gives us spies, which for example let us check if functions are called with
 
 This lets us break down the testing of functions which call other functions, letting us narrow down which function is faulty.
 
+`toBe()` does === whereas `toEqual()` does coercion ==
+
 ### Rewire
 
 Replaces the `require()` module importing process. This gives us control over the import methods so that we can swap out function calls with spies.
@@ -234,3 +236,14 @@ Visual studio provides 'Format Document' on right click. So for example you can 
 We need to hash our passwords so they're safe.
 
 SHA256 obj from `crypto-js` is handy for making hashes. Or we can use `jsonwebtoken` to handle tokens and deal with verification for us.
+
+### postman
+
+Make sure to set up separate environments for heroku and local server urls.
+
+We can also put our current auth token into an environment variable, using the Tests input. This saves us from copying it around, as we can refer to it as `{{x-auth}}`.
+
+```js
+const token = postman.getResponseHeader('x-auth');
+postman.setEnvironmentVariable('x-auth', token);
+```
